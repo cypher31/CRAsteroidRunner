@@ -1,40 +1,65 @@
 package com.crasteroidrunner.game;
 
-import com.badlogic.gdx.ApplicationAdapter;
+import com.badlogic.gdx.Application;
+import com.badlogic.gdx.ApplicationListener;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.GL20;
-import com.badlogic.gdx.graphics.Texture;
-import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 
-public class CaptainRickAR extends ApplicationAdapter {
-	SpriteBatch batch;
-	Texture img;
-	private static float WORLD_TO_SCREEN = 1.0f / 1.0f;
+public class CaptainRickAR implements ApplicationListener {
 	
+	private static final String TAG = CaptainRickAR.class.getName();
 	
+	private WorldController worldController;
+	private WorldRenderer worldRenderer;
 	
+	private boolean paused;
+
 	@Override
-	public void create () {
-		batch = new SpriteBatch();
-		img = new Texture("badlogic.jpg");
-		
-		
+	public void create() {
+		//Set Libgdx log level to DEBUG
+		Gdx.app.setLogLevel(Application.LOG_DEBUG);
+		//Initialize controller and renderer
+		worldController = new WorldController();
+		worldRenderer = new WorldRenderer(worldController);
+		//Game world is active on start
+		paused = false;
 	}
 
 	@Override
-	public void render () {
-		int w = img.getWidth();
-		int h = img.getHeight();
+	public void render() {
+		//Do not update game when paused
+		if(!paused){
+		//Update game world by the time that has passed since last rendered frame
+		worldController.update(Gdx.graphics.getDeltaTime());
+		}
 		
-		float xOrigin = w * .5f;
-		float yOrigin = h * .5f;
-		
-		Gdx.gl.glClearColor(1, 0, 0, 1);
+		//Sets the clear screen color to: Cornflower Blue
+		Gdx.gl.glClearColor(100/255.0f, 149/255.0f, 237/255.0f, 255/255.0f);
+		//Clear the screen
 		Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
-		batch.begin();
-		//I think this doesnt work the correct way because we need to have a camera so we can do the projection matrix.
-		batch.draw(img, Gdx.graphics.getWidth() / 2 - xOrigin, Gdx.graphics.getHeight() / 2 - yOrigin, xOrigin, yOrigin, w, h, WORLD_TO_SCREEN, WORLD_TO_SCREEN, 
-				0.0f, 0, 0, w, h, false, false);
-		batch.end();
+		
+		//Render game world to screen
+		worldRenderer.render();
 	}
+
+	@Override
+	public void resize(int width, int height) {
+		worldRenderer.resize(width, height);
+	}
+
+	@Override
+	public void pause() {
+		paused = true;
+	}
+
+	@Override
+	public void resume() {
+		paused = false;
+	}
+
+	@Override
+	public void dispose() {
+		worldRenderer.dispose();
+	}
+	
 }

@@ -1,0 +1,173 @@
+
+GameScreen.png
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+enemy_carp
+  rotate: false
+  xy: 1, 750
+  size: 308, 257
+  orig: 308, 257
+  offset: 0, 0
+  index: -1
+enemy_orca
+  rotate: false
+  xy: 1, 484
+  size: 264, 264
+  orig: 264, 264
+  offset: 0, 0
+  index: -1
+enemy_bear
+  rotate: false
+  xy: 311, 750
+  size: 256, 257
+  orig: 256, 257
+  offset: 0, 0
+  index: -1
+enemy_crab
+  rotate: false
+  xy: 1, 225
+  size: 256, 257
+  orig: 256, 257
+  offset: 0, 0
+  index: -1
+laserYellow_burst
+  rotate: false
+  xy: 267, 560
+  size: 188, 188
+  orig: 188, 188
+  offset: 0, 0
+  index: -1
+shipBeige_manned
+  rotate: false
+  xy: 569, 885
+  size: 124, 122
+  orig: 124, 122
+  offset: 0, 0
+  index: -1
+trophy
+  rotate: false
+  xy: 1, 123
+  size: 100, 100
+  orig: 100, 100
+  offset: 0, 0
+  index: -1
+asteroid_brn_big
+  rotate: false
+  xy: 457, 652
+  size: 98, 96
+  orig: 98, 96
+  offset: 0, 0
+  index: -1
+enemyRed2
+  rotate: false
+  xy: 569, 799
+  size: 104, 84
+  orig: 104, 84
+  offset: 0, 0
+  index: -1
+enemyGreen3
+  rotate: false
+  xy: 695, 923
+  size: 103, 84
+  orig: 103, 84
+  offset: 0, 0
+  index: -1
+asteroid_gry_big
+  rotate: false
+  xy: 103, 139
+  size: 101, 84
+  orig: 101, 84
+  offset: 0, 0
+  index: -1
+player_ship
+  rotate: false
+  xy: 1, 46
+  size: 99, 75
+  orig: 99, 75
+  offset: 0, 0
+  index: -1
+enemyBlack4
+  rotate: false
+  xy: 457, 566
+  size: 82, 84
+  orig: 82, 84
+  offset: 0, 0
+  index: -1
+laserYellow2
+  rotate: false
+  xy: 800, 907
+  size: 68, 100
+  orig: 68, 100
+  offset: 0, 0
+  index: -1
+stoneCenter
+  rotate: false
+  xy: 267, 488
+  size: 70, 70
+  orig: 70, 70
+  offset: 0, 0
+  index: -1
+laserYellow1
+  rotate: false
+  xy: 870, 907
+  size: 38, 100
+  orig: 38, 100
+  offset: 0, 0
+  index: -1
+laserRed08
+  rotate: false
+  xy: 569, 751
+  size: 48, 46
+  orig: 48, 46
+  offset: 0, 0
+  index: -1
+asteroid_brn_small
+  rotate: false
+  xy: 206, 180
+  size: 43, 43
+  orig: 43, 43
+  offset: 0, 0
+  index: -1
+asteroid_gry_small
+  rotate: false
+  xy: 1, 1
+  size: 43, 43
+  orig: 43, 43
+  offset: 0, 0
+  index: -1
+playerLife1_blue
+  rotate: false
+  xy: 695, 895
+  size: 33, 26
+  orig: 33, 26
+  offset: 0, 0
+  index: -1
+laserBlue02
+  rotate: false
+  xy: 675, 846
+  size: 13, 37
+  orig: 13, 37
+  offset: 0, 0
+  index: -1
+laserRed02
+  rotate: false
+  xy: 541, 613
+  size: 13, 37
+  orig: 13, 37
+  offset: 0, 0
+  index: -1
+bolt_bronze
+  rotate: false
+  xy: 339, 528
+  size: 19, 30
+  orig: 19, 30
+  offset: 0, 0
+  index: -1
+fire05
+  rotate: false
+  xy: 910, 976
+  size: 14, 31
+  orig: 14, 31
+  offset: 0, 0
+  index: -1
