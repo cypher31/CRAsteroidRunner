@@ -6,7 +6,10 @@ import com.crasteroidrunner.game.CaptainRickAR;
 
 public class DesktopLauncher {
 	public static void main (String[] arg) {
-		LwjglApplicationConfiguration config = new LwjglApplicationConfiguration();
-		new LwjglApplication(new CaptainRickAR(), config);
+		LwjglApplicationConfiguration cfg = new LwjglApplicationConfiguration();
+		cfg.title = "Title";
+		cfg.height = 900;
+		cfg.width = 1600;
+		new LwjglApplication(new CaptainRickAR(), cfg);
 	}
 }

@@ -3,24 +3,24 @@ package com.crasteroidrunner.game;
 public class Constants {
 
 	/**
-	 * Visible game world is 5 meters wide
+	 * Visible game world is 32 meters wide
 	 */
-	public static final float VIEWPORT_WIDTH = 5;
+	public static final float VIEWPORT_WIDTH = 32;
 
 	/**
-	 * Visible game world is 5 meters tall
+	 * Visible game world is 18 meters tall
 	 */
-	public static final float VIEWPORT_HEIGHT = 5;
+	public static final float VIEWPORT_HEIGHT = 18;
 
 	/**
 	 * GUI Width
 	 */
-	public static final float VIEWPORT_GUI_WIDTH = 800;
+	public static final float VIEWPORT_GUI_WIDTH = 1600;
 
 	/**
 	 * GUI Height
 	 */
-	public static final float VIEWPORT_GUI_HEIGHT = 480;
+	public static final float VIEWPORT_GUI_HEIGHT = 900;
 
 	/**
 	 * Location of description file for texture atlas
@@ -40,7 +40,7 @@ public class Constants {
 	/**
 	 * Duration of feather power-up in seconds
 	 */
-	public static final float ITEM_FEATHER_POWERUP_DURATION = 9;
+	public static final float ITEM_OVERCHARGE_POWERUP_DURATION = 4;
 
 	/**
 	 * Delay after game over
