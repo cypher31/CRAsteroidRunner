@@ -64,12 +64,11 @@ public class Level {
 					//setting as obj variable would not work, instantiated directly and now works
 					//debugger now shows the playership under >level instead of >worldcontroller
 					playerShip = new PlayerShip();
-					offsetHeight = -3.0f;
-					playerShip.position.set(5, 5);
+					//offsetHeight = -3.0f;
 					playerShip.rotation = 270;
+					playerShip.position.set(pixelX, baseHeight);
 					//playerShip = (PlayerShip) obj;
-					Gdx.app.debug("spawn", "player");
-					System.out.print(playerShip.position);
+					//Gdx.app.debug("spawn", "player");
 				}
 				else{
 					//unknown colors go here

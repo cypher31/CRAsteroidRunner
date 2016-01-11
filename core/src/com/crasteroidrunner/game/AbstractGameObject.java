@@ -39,40 +39,53 @@ public abstract class AbstractGameObject {
 		bounds = new Rectangle();
 	}
 	
-	public void update(float deltaTime){
-		if(body == null){
+	public void update(float deltaTime) {
+		if (body == null) {
 			updateMotionX(deltaTime);
 			updateMotionY(deltaTime);
-			//move to new position
+			// Move to new position
 			position.x += velocity.x * deltaTime;
 			position.y += velocity.y * deltaTime;
-		} else{
+		} else {
 			position.set(body.getPosition());
 			rotation = body.getAngle() * MathUtils.radiansToDegrees;
 		}
+
 	}
 	
 	public abstract void render(SpriteBatch batch);
 	
-	protected void updateMotionX(float deltaTime){
-		if(velocity.x != 0){
-			//apply friction -- this is from the canyon bunny demo
-			//however this will be in space...no friction
-			//instead the player will control acceleration/deceleration directly
+
+	protected void updateMotionX(float deltaTime) {
+		if (velocity.x != 0) {
+			// Apply friction
+			if (velocity.x > 0) {
+				velocity.x = Math.max(velocity.x - friction.x * deltaTime, 0);
+			} else {
+				velocity.x = Math.min(velocity.x + friction.x * deltaTime, 0);
+			}
 		}
-		//apply acceleration
+		// Apply acceleration
 		velocity.x += acceleration.x * deltaTime;
-		//make sure objects velocity does not excede terminal velocity
-		velocity.x = MathUtils.clamp(velocity.x, -terminalVelocity.x, terminalVelocity.y);
+		// Make sure the object's velocity does not exceed the positive or
+		// negative terminal velocity
+		velocity.x = MathUtils.clamp(velocity.x, -terminalVelocity.x, terminalVelocity.x);
 	}
-	
-	protected void updateMotionY(float deltaTime){
-		if(velocity.y != 0){
-			//apply friction -- this is from the canyon bunny demo
-			//however this will be in space...no friction and no gravity
-			//instead the player will control acceleration/deceleration directly
+
+	protected void updateMotionY(float deltaTime) {
+		if (velocity.y != 0) {
+			// Apply friction
+			if (velocity.y > 0) {
+				velocity.y = Math.max(velocity.y - friction.y * deltaTime, 0);
+			} else {
+				velocity.y = Math.min(velocity.y + friction.y * deltaTime, 0);
+			}
 		}
-		//apply acceleration -- no acceleration, we are in space
+		// Apply acceleration
+		velocity.y += acceleration.y * deltaTime;
+		// Make sure the object's velocity does not exceed the positive or
+		// negative terminal velocity
+		velocity.y = MathUtils.clamp(velocity.y, -terminalVelocity.y, terminalVelocity.y);
 	}
 
 }

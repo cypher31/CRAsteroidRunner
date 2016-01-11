@@ -38,11 +38,8 @@ public class WorldController extends InputAdapter implements Disposable{
 	}
 	
 	private void init(){
-//		initTestObjects();
 		Gdx.input.setInputProcessor(this);
 		initLevel();
-//		playerShip = new PlayerShip();
-//		playerShip.position.set(Gdx.graphics.getWidth() / 2, Gdx.graphics.getHeight() / 2);
 	}
 	
 	private void initLevel(){
@@ -50,51 +47,28 @@ public class WorldController extends InputAdapter implements Disposable{
 	}
 
 	public void update(float deltaTime) {
-		//updateTestObjects(deltaTime);
 		handleInputGame(deltaTime);
 		level.update(deltaTime);
 	}
 	
 	private void handleInputGame(float deltaTime){
+		if (Gdx.input.isKeyPressed(Keys.RIGHT)){
+			if(level.playerShip.position.x < Constants.VIEWPORT_WIDTH / 3.0f - level.playerShip.dimension.x){
+				level.playerShip.velocity.x = level.playerShip.terminalVelocity.x;
+				System.out.print(level.playerShip.position.x);
+				//System.out.print(Constants.VIEWPORT_WIDTH / 3.0f);
+			} 
+		}
 		if(Gdx.input.isKeyPressed(Keys.LEFT)){
 			level.playerShip.velocity.x = -level.playerShip.terminalVelocity.x;
-		} else if (Gdx.input.isKeyPressed(Keys.RIGHT)){
-			level.playerShip.velocity.x = level.playerShip.terminalVelocity.x;
-		} else{
-			//What happens during no input
-		}
+		} 
+		if (Gdx.input.isKeyPressed(Keys.UP)){
+			level.playerShip.velocity.y = level.playerShip.terminalVelocity.y;
+		} 
+		if (Gdx.input.isKeyPressed(Keys.DOWN)){
+			level.playerShip.velocity.y = -level.playerShip.terminalVelocity.y;
+		} 
 	}
-	
-//	public void updateTestObjects(float deltaTime){
-//		//get current rotation from selected sprite
-//		float rotation = testSprites[selectedSprite].getRotation();
-//		//rotate sprite
-//		rotation = 270;
-//		testSprites[selectedSprite].setRotation(rotation);
-//	}
-//	
-//	private void initTestObjects(){
-//		//create array for 1 new sprites
-//		testSprites = new Sprite[1];
-//		//create a list of texture regions
-//		Array<TextureRegion> regions = new Array<TextureRegion>();
-//		regions.add(Assets.instance.pShip.ship);
-//		
-//		for(int i = 0; i < testSprites.length; i++){
-//			Sprite spr = new Sprite(regions.random());
-//			//define sprite size to be 1mx1m
-//			spr.setSize(1, 1);
-//			//set origin to sprites center
-//			spr.setOrigin(spr.getWidth() / 2.0f, spr.getHeight() / 2.0f);
-//			//random position for sprite
-//			float randomX = MathUtils.random(-2.0f, 2.0f);
-//			float randomY = MathUtils.random(-2.0f, 2.0f);
-//			spr.setPosition(randomX, randomY);
-//			//put new sprite into array
-//			testSprites[i] = spr;
-//		}
-//		selectedSprite = 0;
-//	}
 	
 	@Override
 	public boolean keyUp(int keycode){

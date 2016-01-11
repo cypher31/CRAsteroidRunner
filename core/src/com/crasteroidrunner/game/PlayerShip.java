@@ -31,12 +31,13 @@ public class PlayerShip extends AbstractGameObject{
 		dimension.set(1,1);
 		regShip = Assets.instance.pShip.ship;
 		//Center image on game object
-		origin.set(dimension.x / 2, dimension.y /2);
+		origin.set(dimension.x / 2, dimension.y / 2);
 		//Bounding box for collision detection
 		bounds.set(0, 0, dimension.x, dimension.y);
 		//set physics values
-		terminalVelocity.set(10.0f, 0f);
-		acceleration.set(25.0f, 0.0f);
+		terminalVelocity.set(7.5f, 5.0f);
+		acceleration.set(0.0f, 0.0f);
+		friction.set(12.0f, 12.0f);
 		//power-ups
 		hasOverCharge = false;
 		timeLeftOverCharge = 0;
@@ -80,7 +81,6 @@ public class PlayerShip extends AbstractGameObject{
 		//not exactly sure why this works...need to find the page reference
 		batch.draw(reg.getTexture(), position.x, position.y, origin.x, origin.y, dimension.x, dimension.y, scale.x, scale.y, rotation, //
 				reg.getRegionX(), reg.getRegionY(), reg.getRegionWidth(), reg.getRegionHeight(), viewDirection == VIEW_DIRECTION.RIGHT, false);
-		System.out.print(position);
 	}
 	
 	
