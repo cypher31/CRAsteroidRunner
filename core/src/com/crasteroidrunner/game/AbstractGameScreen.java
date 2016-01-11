@@ -1,49 +1,44 @@
 package com.crasteroidrunner.game;
 
+import com.badlogic.gdx.InputProcessor;
 import com.badlogic.gdx.Screen;
+import com.badlogic.gdx.assets.AssetManager;
 
-public class AbstractGameScreen implements Screen{
-
-	@Override
-	public void show() {
-		// TODO Auto-generated method stub
-		
+public abstract class AbstractGameScreen implements Screen{
+	
+	//research
+	protected DirectedGame game;
+	
+	public AbstractGameScreen(DirectedGame game){
+		this.game = game;
 	}
 
 	@Override
-	public void render(float delta) {
-		// TODO Auto-generated method stub
-		
-	}
+	public abstract void show();
 
 	@Override
-	public void resize(int width, int height) {
-		// TODO Auto-generated method stub
-		
-	}
+	public abstract void render(float deltaTime);
 
 	@Override
-	public void pause() {
-		// TODO Auto-generated method stub
-		
-	}
+	public abstract void resize(int width, int height);
 
+	@Override
+	public abstract void pause();
+	
+	public abstract InputProcessor getInputProcessor();
+
+	@Override
+	public abstract void hide();
+	
 	@Override
 	public void resume() {
-		// TODO Auto-generated method stub
-		
+		Assets.instance.init(new AssetManager());
 	}
 
-	@Override
-	public void hide() {
-		// TODO Auto-generated method stub
-		
-	}
 
 	@Override
 	public void dispose() {
-		// TODO Auto-generated method stub
-		
+		Assets.instance.dispose();
 	}
 
 }

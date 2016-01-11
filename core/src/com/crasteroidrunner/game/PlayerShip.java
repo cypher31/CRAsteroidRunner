@@ -7,9 +7,10 @@ import com.badlogic.gdx.graphics.g2d.TextureRegion;
 public class PlayerShip extends AbstractGameObject{
 	
 	public static final String TAG = PlayerShip.class.getName();
+	Level level;
 	
 	public enum VIEW_DIRECTION{
-		LEFT
+		LEFT, RIGHT
 	}
 
 	public enum STATE{
@@ -23,6 +24,7 @@ public class PlayerShip extends AbstractGameObject{
 	
 	public PlayerShip(){
 		init();
+		//Gdx.app.debug(TAG, "PlayerShip()");
 	}
 	
 	public void init(){
@@ -38,6 +40,7 @@ public class PlayerShip extends AbstractGameObject{
 		//power-ups
 		hasOverCharge = false;
 		timeLeftOverCharge = 0;
+		Gdx.app.debug(TAG, "init()");
 		//Dust particles -- add later
 		//dustParticles.load(Gdx.files.internal(dust.pfx), Gdx.files.internal("particles"));
 	}
@@ -76,7 +79,8 @@ public class PlayerShip extends AbstractGameObject{
 		reg = regShip;
 		//not exactly sure why this works...need to find the page reference
 		batch.draw(reg.getTexture(), position.x, position.y, origin.x, origin.y, dimension.x, dimension.y, scale.x, scale.y, rotation, //
-				reg.getRegionX(), reg.getRegionY(), reg.getRegionWidth(), reg.getRegionHeight(), viewDirection == VIEW_DIRECTION.LEFT, false);
+				reg.getRegionX(), reg.getRegionY(), reg.getRegionWidth(), reg.getRegionHeight(), viewDirection == VIEW_DIRECTION.RIGHT, false);
+		System.out.print(position);
 	}
 	
 	

@@ -15,12 +15,12 @@ public class Constants {
 	/**
 	 * GUI Width
 	 */
-	public static final float VIEWPORT_GUI_WIDTH = 1600;
+	public static final int VIEWPORT_GUI_WIDTH = 1600;
 
 	/**
 	 * GUI Height
 	 */
-	public static final float VIEWPORT_GUI_HEIGHT = 900;
+	public static final int VIEWPORT_GUI_HEIGHT = 900;
 
 	/**
 	 * Location of description file for texture atlas
@@ -30,7 +30,7 @@ public class Constants {
 	/**
 	 * Location of image file for level 01
 	 */
-	public static final String LEVEL_01 = "levels/level-01.png";
+	public static final String LEVEL_01 = "level_01.png";
 
 	/**
 	 * Amount of extra lives at level start
@@ -50,7 +50,7 @@ public class Constants {
 	/**
 	 * Menu screen skin
 	 */
-	public static final String TEXTURE_ATLAS_UI = "images/canyonbunny-ui.pack";
+	public static final String TEXTURE_ATLAS_UI = "GameScreen.pack";
 
 	/**
 	 * Options skin
@@ -65,7 +65,7 @@ public class Constants {
 	/**
 	 * Location of description file for skins
 	 */
-	public static final String SKIN_CANYONBUNNY_UI = "images/canyonbunny-ui.json";
+	public static final String SKIN_MENU_UI = "menu-ui.json";
 
 	/**
 	 * Game preferences file

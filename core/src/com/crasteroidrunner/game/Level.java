@@ -4,22 +4,22 @@ import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.Pixmap;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 
-public class Level_01 {
+public class Level {
 	
-	public static final String TAG = Level_01.class.getName();
+	public static final String TAG = Level.class.getName();
 	
 	//player
 	public PlayerShip playerShip;
 	
 	//color for each block type
 	public enum BLOCK_TYPE{
-		EMPTY(0,0,0),
-		PLAYER_SPAWNPOINT(255,255,255);
+		EMPTY(0,0,0), //black
+		PLAYER_SPAWNPOINT(255,255,255); //white
 		
 		private int color;
 		
 		private BLOCK_TYPE(int r, int g, int b){
-			//reserach
+			//research
 			color = r << 24 | g << 16 | b << 8 | 0xff;
 		}
 		
@@ -32,7 +32,7 @@ public class Level_01 {
 		}
 	}
 	
-	public Level_01(String filename){
+	public Level(String filename){
 		init(filename);
 	}
 	
@@ -56,26 +56,40 @@ public class Level_01 {
 				//point and create the corresponding game object if there is a match
 				if(BLOCK_TYPE.EMPTY.sameColor(currentPixel)){
 					//do nothing
+					//Gdx.app.debug(TAG, "empty cell");
 				}
 				//spawn point
 				else if(BLOCK_TYPE.PLAYER_SPAWNPOINT.sameColor(currentPixel)){
-					obj = new PlayerShip();
+					//changed from the book...
+					//setting as obj variable would not work, instantiated directly and now works
+					//debugger now shows the playership under >level instead of >worldcontroller
+					playerShip = new PlayerShip();
 					offsetHeight = -3.0f;
-					obj.position.set(pixelX, baseHeight * obj.dimension.y + offsetHeight);
-					playerShip = (PlayerShip) obj;
+					playerShip.position.set(5, 5);
+					playerShip.rotation = 270;
+					//playerShip = (PlayerShip) obj;
+					Gdx.app.debug("spawn", "player");
+					System.out.print(playerShip.position);
 				}
-				
 				else{
 					//unknown colors go here
+//					int r = 0xff & currentPixel >>> 24; // red color channel
+//					int g = 0xff & currentPixel >>> 16; // green color channel
+//					int b = 0xff & currentPixel >>> 8; // blue color channel
+//					int a = 0xff & currentPixel; // alpha channel
+//					Gdx.app.error(TAG, "Unknown object at x<" + pixelX + "> y<" + pixelY + ">: r<" + r + "> g<" + g + "> b<" + b + "> a<" + a + ">");
 				}
 				lastPixel = currentPixel;
 			}
 		}
 		//decoration
+		pixmap.dispose();
+		Gdx.app.debug(TAG, "level '" + filename + "' loaded");
 	}
 	
 	public void render(SpriteBatch batch){
 		playerShip.render(batch);
+		//Gdx.app.debug(TAG, "render()");
 	}
 	
 	public void update(float deltaTime){
