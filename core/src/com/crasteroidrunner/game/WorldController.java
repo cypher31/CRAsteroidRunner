@@ -21,6 +21,7 @@ public class WorldController extends InputAdapter implements Disposable{
 	
 	DirectedGame game;
 	PlayerShip playerShip;
+	PlayerBullet playerBullet;
 	
 	public Level level;
 	public World b2world;
@@ -55,19 +56,31 @@ public class WorldController extends InputAdapter implements Disposable{
 		if (Gdx.input.isKeyPressed(Keys.RIGHT)){
 			if(level.playerShip.position.x < Constants.VIEWPORT_WIDTH / 3.0f - level.playerShip.dimension.x){
 				level.playerShip.velocity.x = level.playerShip.terminalVelocity.x;
-				System.out.print(level.playerShip.position.x);
-				//System.out.print(Constants.VIEWPORT_WIDTH / 3.0f);
+				//System.out.print(level.playerShip.position.x);
 			} 
 		}
-		if(Gdx.input.isKeyPressed(Keys.LEFT)){
-			level.playerShip.velocity.x = -level.playerShip.terminalVelocity.x;
-		} 
-		if (Gdx.input.isKeyPressed(Keys.UP)){
+		if (Gdx.input.isKeyPressed(Keys.LEFT)){
+			if(level.playerShip.position.x > 0 + level.playerShip.dimension.x){
+				level.playerShip.velocity.x = -level.playerShip.terminalVelocity.x;
+				//System.out.print(level.playerShip.position.x);
+			} 
+		}
+		if (Gdx.input.isKeyPressed(Keys.UP) && level.playerShip.position.y < 16 - level.playerShip.dimension.y){
 			level.playerShip.velocity.y = level.playerShip.terminalVelocity.y;
+			System.out.print(level.playerShip.position);
 		} 
-		if (Gdx.input.isKeyPressed(Keys.DOWN)){
+		if (Gdx.input.isKeyPressed(Keys.DOWN) && level.playerShip.position.y > 2){
 			level.playerShip.velocity.y = -level.playerShip.terminalVelocity.y;
+			System.out.print(level.playerShip.position);
 		} 
+		if(Gdx.input.isKeyPressed(Keys.SPACE)){
+//			playerBullet = new PlayerBullet();
+//			playerBullet.render(playerBullet.batch);
+//			//offsetHeight = -3.0f;
+//			playerBullet.rotation = 270;
+//			playerBullet.position.set(5, 5);
+//			System.out.print("space");
+		}
 	}
 	
 	@Override

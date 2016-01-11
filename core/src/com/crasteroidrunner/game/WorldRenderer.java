@@ -10,6 +10,7 @@ public class WorldRenderer implements Disposable{
 	private OrthographicCamera camera;
 	private SpriteBatch batch;
 	private WorldController worldController;
+	public PlayerBullet playerBullet;
 	
 	public WorldRenderer (WorldController worldController) {
 		this.worldController = worldController;

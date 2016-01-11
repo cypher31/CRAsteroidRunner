@@ -7,7 +7,7 @@ import com.badlogic.gdx.graphics.g2d.TextureRegion;
 public class PlayerShip extends AbstractGameObject{
 	
 	public static final String TAG = PlayerShip.class.getName();
-	Level level;
+	//Level level;
 	
 	public enum VIEW_DIRECTION{
 		LEFT, RIGHT
@@ -37,11 +37,11 @@ public class PlayerShip extends AbstractGameObject{
 		//set physics values
 		terminalVelocity.set(7.5f, 5.0f);
 		acceleration.set(0.0f, 0.0f);
-		friction.set(12.0f, 12.0f);
+		friction.set(22.0f, 22.0f);
 		//power-ups
 		hasOverCharge = false;
 		timeLeftOverCharge = 0;
-		Gdx.app.debug(TAG, "init()");
+		//Gdx.app.debug(TAG, "init()");
 		//Dust particles -- add later
 		//dustParticles.load(Gdx.files.internal(dust.pfx), Gdx.files.internal("particles"));
 	}

@@ -16,6 +16,7 @@ public class Assets implements Disposable, AssetErrorListener{
 	private AssetManager assetManager;
 	
 	public AssetPShip pShip;
+	public AssetPBullet pBullet;
 	public AssetAsteroidBrnBig	asteroidBrnBig;
 	public AssetAsteroidGryBig	asteroidGryBig;
 	public AssetAsteroidBrnSmall	asteroidBrnSmall;
@@ -39,11 +40,12 @@ public class Assets implements Disposable, AssetErrorListener{
 		
 		TextureAtlas atlas = assetManager.get(Constants.TEXTURE_ATLAS_OBJECTS);
 		for(Texture texture : atlas.getTextures()){
-			texture.setFilter(TextureFilter.Linear, TextureFilter.Linear);
+			texture.setFilter(TextureFilter.Nearest, TextureFilter.Nearest);
 		}
 		
 		//create the game resource objects (LLGD 156)
 		pShip = new AssetPShip(atlas);
+		pBullet = new AssetPBullet(atlas);
 		asteroidBrnBig = new AssetAsteroidBrnBig(atlas);
 		asteroidGryBig = new AssetAsteroidGryBig(atlas);
 		asteroidBrnSmall = new AssetAsteroidBrnSmall(atlas);
@@ -71,6 +73,14 @@ public class Assets implements Disposable, AssetErrorListener{
 		
 		public AssetPShip(TextureAtlas atlas){
 			ship = atlas.findRegion("player_ship");
+		}
+	}
+	
+	public class AssetPBullet{
+		public final AtlasRegion bullet;
+		
+		public AssetPBullet(TextureAtlas atlas){
+			bullet = atlas.findRegion("laserBlue02");
 		}
 	}
 	

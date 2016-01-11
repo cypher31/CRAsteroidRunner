@@ -1,15 +1,20 @@
 package com.crasteroidrunner.game;
 
+import java.util.Iterator;
+
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.Pixmap;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
+import com.badlogic.gdx.utils.Array;
 
 public class Level {
 	
 	public static final String TAG = Level.class.getName();
-	
+
 	//player
 	public PlayerShip playerShip;
+	public WorldController worldController;
+	public PlayerBullet playerBullet;
 	
 	//color for each block type
 	public enum BLOCK_TYPE{
@@ -37,9 +42,10 @@ public class Level {
 	}
 	
 	private void init(String filename){
+		//playerBullet = new Array<PlayerBullet>();
 		//player character
 		playerShip = null;
-		
+		playerBullet = null;
 		//load image file
 		Pixmap pixmap = new Pixmap(Gdx.files.internal(filename));
 		//scan pixels from top-left to bottom-right
@@ -81,6 +87,9 @@ public class Level {
 				lastPixel = currentPixel;
 			}
 		}
+		playerBullet = new PlayerBullet();
+		playerBullet.position.set(playerShip.position.x + playerShip.dimension.x, 
+				playerShip.position.y + playerShip.dimension.y / 2 - playerBullet.dimension.y / 2);
 		//decoration
 		pixmap.dispose();
 		Gdx.app.debug(TAG, "level '" + filename + "' loaded");
@@ -88,11 +97,25 @@ public class Level {
 	
 	public void render(SpriteBatch batch){
 		playerShip.render(batch);
+		playerBullet.render(batch);
+//		for(Iterator<PlayerBullet> itr = .iterator(); itr.hasNext();)
+//		{
+//		  PlayerBullet playerBullet = itr.next();
+//
+//		  playerBullet.update();
+//
+//		  if(playerBullet.position.y > Gdx.graphics.getHeight())
+//		  {
+//		     itr.remove();
+//		  }
+//		}
+		//playerBullet.render(batch);
 		//Gdx.app.debug(TAG, "render()");
 	}
 	
 	public void update(float deltaTime){
 		playerShip.update(deltaTime);
+//		playerBullet.update(deltaTime);
 	}
 
 }
